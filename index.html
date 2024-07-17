@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Cookie Consent by Insites -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <style>
+        .cc-window {
+            background-color: #2e3b4e !important;
+            /* Darker background color */
+            color: #ffffff !important;
+            /* White text color */
+            border-radius: 8px !important;
+            /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+            /* Box shadow */
+            padding: 20px !important;
+            /* More padding */
+            max-width: 500px !important;
+            /* Set max width */
+            margin: 0 auto !important;
+            /* Center the banner */
+        }
+
+        .cc-compliance .cc-btn {
+            color: #ffffff !important;
+            /* White text color for buttons */
+            background-color: #1d72b8 !important;
+            /* Blue background for buttons */
+            border-radius: 4px !important;
+            /* Rounded corners for buttons */
+            padding: 10px 20px !important;
+            /* More padding for buttons */
+            margin: 5px !important;
+            /* Space between buttons */
+            text-transform: uppercase !important;
+            /* Uppercase text */
+        }
+
+        .cc-compliance .cc-btn:hover {
+            background-color: #155a8a !important;
+            /* Darker blue on hover */
+        }
+
+        .cc-link {
+            color: #f1d600 !important;
+            /* Yellow link color */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Your website content -->
+
+    <!-- Initialize Cookie Consent -->
+    <script>
+        window.addEventListener("load", function () {
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "#2e3b4e",
+                        "text": "#ffffff"
+                    },
+                    "button": {
+                        "background": "#1d72b8",
+                        "text": "#ffffff"
+                    }
+                },
+                "theme": "classic",
+                "type": "opt-in", // Changes the banner to include an opt-in feature
+                "content": {
+                    "message": "This website uses cookies to ensure you get the best experience on our website.",
+                    "dismiss": "Accept",
+                    "deny": "Decline",
+                    "link": "Learn more",
+                    "href": "/privacy-policy" // Make sure this links to your privacy policy
+                },
+                "onInitialise": function (status) {
+                    manageCookies(status == cookieconsent.status.allow);
+                },
+                "onStatusChange": function (status, chosenBefore) {
+                    manageCookies(status == cookieconsent.status.allow);
+                },
+                "onRevokeChoice": function () {
+                    manageCookies(false);
+                }
+            })
+        });
+
+        // Function to enable or disable cookies based on user choice
+        function manageCookies(allow) {
+            if (allow) {
+                // Code to enable cookies
+            } else {
+                // Code to disable cookies
+                // For example, remove all non-essential cookies
+                document.cookie.split(";").forEach(function (c) {
+                    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
